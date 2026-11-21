@@ -83,3 +83,4 @@ jobs:
             echo "- npm version: \`$(node -p "require('./package.json').version")\`"
             echo "- Gentoo: Release CI will publish to \`axuanran/xr-overlay\`"
           } >> "$GITHUB_STEP_SUMMARY"
+
