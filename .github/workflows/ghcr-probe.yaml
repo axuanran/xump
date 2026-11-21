@@ -1,0 +1,33 @@
+name: GHCR Probe
+
+# Temporary: proves whether the new repository may push to the existing
+# ghcr.io/<owner>/xump package (it was created by the old, now archived repo).
+# Delete this workflow once the package is linked in the package settings UI.
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Push scratch image to ghcr.io/<owner>/xump:ci-probe
+        run: |
+          set -euo pipefail
+          owner="$(echo "${GITHUB_REPOSITORY}" | cut -d/ -f1)"
+          image="ghcr.io/${owner}/xump"
+          printf 'FROM scratch\nLABEL org.opencontainers.image.title="ghcr permission probe"\n' > Dockerfile.probe
+          echo "${GITHUB_TOKEN}" | docker login ghcr.io -u "${GITHUB_ACTOR}" --password-stdin
+          docker build -f Dockerfile.probe -t "${image}:ci-probe" .
+          if docker push "${image}:ci-probe"; then
+            echo "GHCR OK: new repo may push to ${image}"
+          else
+            echo "::error::GHCR DENIED: link axuanran/xump to the package in package settings"
+            exit 1
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
