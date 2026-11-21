@@ -143,4 +143,3 @@ jobs:
             dist_electron/*.exe
             dist_electron/*.blockmap
             dist_electron/latest*.yml
-

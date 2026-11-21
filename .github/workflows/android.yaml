@@ -205,4 +205,3 @@ jobs:
         if: always() && inputs.publish-artifact
         shell: bash
         run: rm -f "${RUNNER_TEMP}/xump-release.jks"
-

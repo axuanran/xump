@@ -160,4 +160,3 @@ jobs:
           echo "Manifest: ${R2_PUBLIC_BASE_URL}/tui/v${VERSION}/latest.json" >> "$GITHUB_STEP_SUMMARY"
           echo "" >> "$GITHUB_STEP_SUMMARY"
           ls -lh dist_bundle >> "$GITHUB_STEP_SUMMARY"
-
