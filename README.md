@@ -31,9 +31,6 @@
 
 ## 请使用标注为Latest的版本
 
-> [!NOTE]
-> 仓库已迁移至 **axuanran/xump**。首个新 Release 发布前，`0.1.6` 的安装包仍可在旧仓库 [v0.1.6](https://github.com/axuanran/YesPlayMusic/releases/tag/v0.1.6) 下载；新 Release 发布后请忽略此行。
-
 ## 最近新增
 
 - 📻 **私人漫游**：在首页或音乐库原有的私人 FM 卡片中选择默认、熟悉、探索或场景模式，场景包含运动、专注、助眠、通勤等；选择会保存在当前设备。支持通过 [`music_roaming` MCP 工具](llm-docs/mcp.md#personal-roaming)查看状态、启动、切换模式和场景、下一首及不喜欢。正在漫游时切换模式会更新推荐歌曲，切换失败保留原模式。自定义网易云 API 服务需支持 [`/personal/fm/mode`](https://neteasecloudmusicapienhanced.js.org/#/?id=私人-fm-模式选择)。  感谢 @xzl01
